@@ -552,6 +552,22 @@ TextureCacheRuntime::TextureCacheRuntime(const Device& device_, ProgramManager& 
 
 TextureCacheRuntime::~TextureCacheRuntime() = default;
 
+void TextureCacheRuntime::TickFrame() {
+    // Update GC with current memory usage
+    if (CanReportMemoryUsage()) {
+        texture_gc_.UpdateMemoryUsage(GetDeviceMemoryUsage());
+    }
+    
+    // Tick the garbage collector
+    texture_gc_.TickFrame();
+    
+    // Check if memory pressure is high
+    if (texture_gc_.IsMemoryPressureHigh()) {
+        LOG_WARNING(Render_OpenGL, "High memory pressure detected, forcing texture cleanup");
+        texture_gc_.ForceCleanup(256); // Free at least 256MB
+    }
+}
+
 void TextureCacheRuntime::Finish() {
     glFinish();
 }

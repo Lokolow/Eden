@@ -12,6 +12,7 @@
 #include "video_core/renderer_opengl/gl_device.h"
 #include "video_core/renderer_opengl/gl_resource_manager.h"
 #include "video_core/renderer_opengl/gl_staging_buffer_pool.h"
+#include "video_core/renderer_opengl/gl_texture_gc.h"
 #include "video_core/renderer_opengl/util_shaders.h"
 #include "video_core/texture_cache/image_view_base.h"
 #include "video_core/texture_cache/texture_cache_base.h"
@@ -135,7 +136,11 @@ public:
 
     bool HasNativeASTC() const noexcept;
 
-    void TickFrame() {}
+    void TickFrame();
+    
+    TextureGarbageCollector& GetTextureGC() {
+        return texture_gc_;
+    }
 
     StateTracker& GetStateTracker() {
         return state_tracker;
@@ -170,6 +175,9 @@ private:
     std::array<OGLFramebuffer, 4> rescale_read_fbos;
     const Settings::ResolutionScalingInfo& resolution;
     u64 device_access_memory;
+    
+    // Aggressive texture garbage collector for 4GB devices
+    TextureGarbageCollector texture_gc_;
 };
 
 class Image : public VideoCommon::ImageBase {
