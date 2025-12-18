@@ -169,6 +169,8 @@ add_library(video_core STATIC
     renderer_opengl/gl_texture_cache_base.cpp
     renderer_opengl/gl_texture_gc.cpp
     renderer_opengl/gl_texture_gc.h
+    renderer_opengl/gl_astc_optimizer.cpp
+    renderer_opengl/gl_astc_optimizer.h
     renderer_opengl/gl_query_cache.cpp
     renderer_opengl/gl_query_cache.h
     renderer_opengl/maxwell_to_gl.h

@@ -9,6 +9,7 @@
 #include "common/common_types.h"
 #include "core/frontend/emu_window.h"
 #include "shader_recompiler/stage.h"
+#include "video_core/renderer_opengl/gl_astc_optimizer.h"
 
 namespace Settings {
 enum class ShaderBackend : u32;
@@ -78,6 +79,14 @@ public:
 
     bool HasASTC() const {
         return has_astc;
+    }
+    
+    const ASTCOptimizer& GetASTCOptimizer() const {
+        return astc_optimizer_;
+    }
+    
+    bool ShouldUseHardwareASTC() const {
+        return has_astc && astc_optimizer_.ShouldUseHardwareDecoding();
     }
 
     bool HasVariableAoffi() const {
@@ -245,6 +254,9 @@ private:
     bool has_lmem_perf_bug{};
 
     std::string vendor_name;
+    
+    // ASTC optimizer for hardware/software decode selection
+    ASTCOptimizer astc_optimizer_;
 };
 
 } // namespace OpenGL

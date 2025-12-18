@@ -210,6 +210,16 @@ Device::Device(Core::Frontend::EmuWindow& emu_window) {
     has_image_load_formatted = HasExtension(extensions, "GL_EXT_shader_image_load_formatted");
     has_texture_shadow_lod = HasExtension(extensions, "GL_EXT_texture_shadow_lod");
     has_astc = !has_slow_software_astc && IsASTCSupported();
+    
+    // Initialize ASTC optimizer with GPU information
+    astc_optimizer_.Initialize(vendor_name, renderer);
+    
+    // Override has_astc based on optimizer recommendation
+    if (has_astc && !astc_optimizer_.ShouldUseHardwareDecoding()) {
+        LOG_WARNING(Render_OpenGL, 
+                    "Hardware ASTC available but not recommended for this GPU");
+    }
+    
     has_variable_aoffi = TestVariableAoffi();
     has_component_indexing_bug = false;
     has_precise_bug = TestPreciseBug();
