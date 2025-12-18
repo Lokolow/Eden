@@ -1,0 +1,35 @@
+// SPDX-FileCopyrightText: Copyright 2025 Eden Emulator Project
+// SPDX-License-Identifier: GPL-3.0-or-later
+
+// ADD THIS TO src/common/settings.h in the struct Values section
+// Place it in the Renderer category settings, near gpu_accuracy or vsync_mode
+
+    // AI Frame Generator settings
+    SwitchableSetting<bool> ai_frame_gen_enable{linkage, false, "ai_frame_gen_enable",
+                                                 Category::Renderer, Specialization::Default,
+                                                 true, true};
+    
+    SwitchableSetting<AIFrameGenMode, true> ai_frame_gen_mode{
+        linkage,
+        AIFrameGenMode::Adaptive,
+        "ai_frame_gen_mode",
+        Category::Renderer,
+        Specialization::RuntimeList,
+        true,
+        true,
+        &ai_frame_gen_enable};
+    
+    Setting<u32> ai_frame_gen_target_fps{linkage, 60, "ai_frame_gen_target_fps",
+                                         Category::Renderer, Specialization::Default,
+                                         true, true,
+                                         &ai_frame_gen_enable};
+    
+    Setting<u32> ai_frame_gen_memory_limit{linkage, 512, "ai_frame_gen_memory_limit",
+                                           Category::Renderer, Specialization::Default,
+                                           true, true,
+                                           &ai_frame_gen_enable};
+    
+    Setting<bool> ai_frame_gen_use_neon{linkage, true, "ai_frame_gen_use_neon",
+                                        Category::Renderer, Specialization::Default,
+                                        true, true,
+                                        &ai_frame_gen_enable};

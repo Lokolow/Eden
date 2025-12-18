@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- SPDX-FileCopyrightText: Copyright 2025 Eden Emulator Project -->
+<!-- SPDX-License-Identifier: GPL-3.0-or-later -->
+
+<resources>
+    <!-- AI Frame Generator Mode Options -->
+    <string-array name="ai_frame_gen_modes">
+        <item>Disabled</item>
+        <item>Conservative (Low Power)</item>
+        <item>Balanced (Recommended)</item>
+        <item>Aggressive (High Performance)</item>
+        <item>Adaptive (Auto-adjust)</item>
+    </string-array>
+
+    <integer-array name="ai_frame_gen_modes_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </integer-array>
+</resources>

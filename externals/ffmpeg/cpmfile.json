@@ -1,0 +1,16 @@
+{
+    "ffmpeg": {
+        "repo": "FFmpeg/FFmpeg",
+        "sha": "c2184b65d2",
+        "hash": "007b1ccdd4d3ea3324835258d9a255103253bd66edb442b12d9c60dca85149cad52136a3b3120e5094115b6a3d9e80eeacbf9c07e5ffafc9ac459614d5fa3b22",
+        "bundled": true
+    },
+    "ffmpeg-ci": {
+        "ci": true,
+        "package": "FFmpeg",
+        "name": "ffmpeg",
+        "repo": "crueter-ci/FFmpeg",
+        "version": "8.0-be99d2c0b2",
+        "min_version": "4.1"
+    }
+}

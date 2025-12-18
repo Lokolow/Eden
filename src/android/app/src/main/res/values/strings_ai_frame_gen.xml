@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- SPDX-FileCopyrightText: Copyright 2025 Eden Emulator Project -->
+<!-- SPDX-License-Identifier: GPL-3.0-or-later -->
+
+<resources>
+    <!-- AI Frame Generator Settings -->
+    <string name="ai_frame_gen_title">AI Frame Generator</string>
+    <string name="ai_frame_gen_description">Intelligent frame interpolation for smoother gameplay</string>
+    
+    <string name="ai_frame_gen_enable">Enable AI Frame Generator</string>
+    <string name="ai_frame_gen_enable_description">Use AI to generate intermediate frames and boost FPS. Optimized for Android 9+ with 4GB RAM.</string>
+    
+    <string name="ai_frame_gen_mode">AI Frame Gen Mode</string>
+    <string name="ai_frame_gen_mode_description">Select interpolation quality and performance balance</string>
+    
+    <string name="ai_frame_gen_mode_disabled">Disabled</string>
+    <string name="ai_frame_gen_mode_conservative">Conservative (Low Power)</string>
+    <string name="ai_frame_gen_mode_conservative_desc">Minimal CPU usage, best for weak devices (Cortex-A53/A55)</string>
+    
+    <string name="ai_frame_gen_mode_balanced">Balanced (Recommended)</string>
+    <string name="ai_frame_gen_mode_balanced_desc">Good quality with moderate CPU usage (Cortex-A73/A75)</string>
+    
+    <string name="ai_frame_gen_mode_aggressive">Aggressive (High Performance)</string>
+    <string name="ai_frame_gen_mode_aggressive_desc">Maximum quality, requires powerful CPU (Cortex-A76+)</string>
+    
+    <string name="ai_frame_gen_mode_adaptive">Adaptive (Auto-adjust)</string>
+    <string name="ai_frame_gen_mode_adaptive_desc">Automatically adjusts based on CPU load and performance</string>
+    
+    <string name="ai_frame_gen_target_fps">Target FPS</string>
+    <string name="ai_frame_gen_target_fps_description">Frame rate goal for interpolation (30-120 FPS)</string>
+    
+    <string name="ai_frame_gen_memory_limit">Memory Limit</string>
+    <string name="ai_frame_gen_memory_limit_description">Maximum RAM usage for frame buffers (256-1024 MB)</string>
+    
+    <string name="ai_frame_gen_use_neon">Use ARM NEON Optimizations</string>
+    <string name="ai_frame_gen_use_neon_description">Enable hardware-accelerated SIMD instructions for faster processing</string>
+    
+    <string name="ai_frame_gen_stats">Frame Gen Statistics</string>
+    <string name="ai_frame_gen_stats_fps">Current FPS: %1$s</string>
+    <string name="ai_frame_gen_stats_cpu">CPU Usage: %1$s%%</string>
+    <string name="ai_frame_gen_stats_memory">Memory Usage: %1$s MB</string>
+    <string name="ai_frame_gen_stats_generated">Frames Generated: %1$s</string>
+    <string name="ai_frame_gen_stats_interpolated">Frames Interpolated: %1$s</string>
+    
+    <string name="ai_frame_gen_cpu_detected">Detected CPU: %1$s</string>
+    <string name="ai_frame_gen_cpu_cores">Cores: %1$d (%2$d big + %3$d little)</string>
+    <string name="ai_frame_gen_cpu_freq">Max Frequency: %1$d MHz</string>
+    <string name="ai_frame_gen_ram">Available RAM: %1$d MB</string>
+    
+    <string name="ai_frame_gen_warning_low_ram">Warning: Low RAM detected. Recommended to use Conservative mode.</string>
+    <string name="ai_frame_gen_warning_weak_cpu">Warning: Weak CPU detected. Frame generation may impact performance.</string>
+    <string name="ai_frame_gen_optimized_for">Optimized for: %1$s</string>
+</resources>

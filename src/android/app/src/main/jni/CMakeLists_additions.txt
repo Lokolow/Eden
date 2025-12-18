@@ -1,0 +1,72 @@
+# ============================================
+# ADICIONAR AO CMakeLists.txt DO ANDROID JNI
+# ============================================
+# Localização: projetos/eden/src/android/app/src/main/jni/CMakeLists.txt
+
+# 1. THERMAL PROTECTION
+add_library(thermal_protection STATIC
+    thermal_protection.cpp
+    thermal_protection.h
+)
+
+target_include_directories(thermal_protection PRIVATE
+    ${CMAKE_SOURCE_DIR}/src
+    ${CMAKE_SOURCE_DIR}/src/common
+)
+
+target_link_libraries(thermal_protection PRIVATE
+    common
+    android
+    log
+)
+
+# 2. SAFE TESTING FRAMEWORK
+add_library(safe_testing STATIC
+    safe_testing_framework.h
+)
+
+target_include_directories(safe_testing PRIVATE
+    ${CMAKE_SOURCE_DIR}/src
+    ${CMAKE_SOURCE_DIR}/src/common
+)
+
+target_link_libraries(safe_testing PRIVATE
+    thermal_protection
+    common
+)
+
+# 3. OPENGL FRAME GENERATOR
+add_library(opengl_frame_gen STATIC
+    ${CMAKE_SOURCE_DIR}/src/video_core/opengl_frame_generator.cpp
+    ${CMAKE_SOURCE_DIR}/src/video_core/opengl_frame_generator.h
+)
+
+target_include_directories(opengl_frame_gen PRIVATE
+    ${CMAKE_SOURCE_DIR}/src
+    ${CMAKE_SOURCE_DIR}/externals/glad/include
+)
+
+target_link_libraries(opengl_frame_gen PRIVATE
+    common
+    video_core
+    glad
+    GLESv3
+    EGL
+)
+
+# 4. ADICIONAR AO TARGET PRINCIPAL
+# Encontre a linha: target_link_libraries(yuzu-android PRIVATE ...)
+# E adicione:
+
+target_link_libraries(yuzu-android PRIVATE
+    # ... bibliotecas existentes ...
+    thermal_protection
+    safe_testing
+    opengl_frame_gen
+)
+
+# 5. ADICIONAR DEFINIÇÕES DE COMPILAÇÃO
+target_compile_definitions(yuzu-android PRIVATE
+    ENABLE_THERMAL_PROTECTION=1
+    ENABLE_OPENGL_FRAME_GEN=1
+)

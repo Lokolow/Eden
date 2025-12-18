@@ -1,0 +1,23 @@
+# ============================================
+# ADICIONAR AO CMakeLists.txt DO VIDEO_CORE
+# ============================================
+# Localização: projetos/eden/src/video_core/CMakeLists.txt
+
+# Encontre: add_library(video_core STATIC ...
+# E adicione os novos arquivos:
+
+add_library(video_core STATIC
+    # ... arquivos existentes ...
+    
+    # Novos arquivos
+    opengl_frame_generator.cpp
+    opengl_frame_generator.h
+    adaptive_resolution.cpp
+    adaptive_resolution.h
+)
+
+# Certifique-se que glad está linkado
+target_link_libraries(video_core PUBLIC
+    # ... libs existentes ...
+    glad
+)
