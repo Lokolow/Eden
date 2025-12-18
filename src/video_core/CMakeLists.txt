@@ -173,6 +173,8 @@ add_library(video_core STATIC
     renderer_opengl/gl_astc_optimizer.h
     renderer_opengl/gl_command_buffer_pool.cpp
     renderer_opengl/gl_command_buffer_pool.h
+    renderer_opengl/gl_vram_manager.cpp
+    renderer_opengl/gl_vram_manager.h
     renderer_opengl/gl_query_cache.cpp
     renderer_opengl/gl_query_cache.h
     renderer_opengl/maxwell_to_gl.h
